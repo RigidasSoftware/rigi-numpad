@@ -28,10 +28,16 @@ To switch decimals to commas if the region requires it,
 
 **Please note that the value will be parsed back with a decimal regardless of the func-button. It is a purely visual setting.**
 
-By default, your device will vibrate on keypress if it supports it. You can turn this off by setting vibrate to false
+By default, your device will vibrate for 100ms on keypress if it supports it. You can turn this off by setting vibrate to false. 
 
 ```
 <rigi-numpad element="testInput" vibrate="false"></rigi-numpad>
+```
+
+You can also change the vibration length (in ms) by
+
+```
+<rigi-numpad element="testInput" vibrate-length="200"></rigi-numpad>
 ```
 
 That's it, enjoy!
