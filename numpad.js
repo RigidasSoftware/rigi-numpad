@@ -11,7 +11,7 @@ angular.module('rigi-numpad', []).directive('rigiNumpad', function () {
             attrs.funcButton = attrs.funcButton || '.';
             attrs.allowFunc = attrs.allowFunc || 'true';
             attrs.vibrate = attrs.vibrate || 'true';
-            attrs.vibrateLength = attrs.vibrateLength || 100;
+            attrs.vibrateLength = parseInt(attrs.vibrateLength) || 100;
 
             $('#overlayDiv').on('mousedown', function (event) {
                 $(element).hide();
