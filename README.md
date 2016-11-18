@@ -2,7 +2,7 @@
 An AngularJS directive for numeric input.
 
 # Installation
-Simple reference numpad.js in your app. Please note that JQuery is required for this directive to function
+Simply reference numpad.js in your app. **Please note that JQuery is required for this directive to function**
 
 # Usage
 
