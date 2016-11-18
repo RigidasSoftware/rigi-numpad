@@ -1,11 +1,10 @@
-'use strict';
-
 angular.module('rigi-numpad', []).directive('rigiNumpad', function () {
     return {
         restrict: 'E',
+        scope: {},
         link: function link(scope, element, attrs, controller, transcludeFn) {
             $(element).hide();
-            $('#overlayDiv').hide();
+            $(element).find('#overlayDiv').hide();
 
             var attrElement = '#' + attrs.element;
             attrs.funcButton = attrs.funcButton || '.';
@@ -13,26 +12,26 @@ angular.module('rigi-numpad', []).directive('rigiNumpad', function () {
             attrs.vibrate = attrs.vibrate || 'true';
             attrs.vibrateLength = parseInt(attrs.vibrateLength) || 100;
 
-            $('#overlayDiv').on('mousedown', function (event) {
+            $(element).find('#overlayDiv').on('mousedown', function (event) {
                 $(element).hide();
-                $('#overlayDiv').hide();
+                $(element).find('#overlayDiv').hide();
             });
 
             $(attrElement).on('mousedown', function (event) {
                 event.preventDefault();
                 var initVal = $(attrElement).val();
-                scope.val = initVal.replace('.', scope.getFuncButton());
-                scope.$apply();
+                scope.val = initVal.replace('.', scope.getFuncButton());                
                 $('html, body').animate({
                     scrollTop: $(attrElement).offset().top
                 }, 500);
-                $('#overlayDiv').show();
+                $(element).find('#overlayDiv').show();
                 $(element).show();
+				scope.$apply();
             });
 
             scope.cancel = function () {
                 $(element).hide();
-                $('#overlayDiv').hide();
+                $(element).find('#overlayDiv').hide();
             };
 
             scope.canSave = function () {
@@ -59,7 +58,7 @@ angular.module('rigi-numpad', []).directive('rigiNumpad', function () {
                     scope.val = scope.val.replace(scope.getFuncButton(), '');
                 }
                 $(attrElement).val(parseFloat(scope.val.replace(scope.getFuncButton(), '.')));
-                $('#overlayDiv').hide();
+                $(element).find('#overlayDiv').hide();
                 $(element).hide();
             };
 
