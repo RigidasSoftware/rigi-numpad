@@ -6,6 +6,8 @@ Simply reference numpad.js in your app. **Please note that JQuery is required fo
 
 # Usage
 
+JSFiddle: https://jsfiddle.net/RigidasSoftware/dxqoeccv/
+
 Simple numpad with decimal input
 ```
 <input id="testInput" ng-model="testVal"/>
