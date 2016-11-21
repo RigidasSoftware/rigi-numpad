@@ -17,18 +17,22 @@ angular.module('rigi-numpad', []).directive('rigiNumpad', function () {
 
             overlay.on('mousedown', function (event) {
                 element.hide();
-            });
+            });            
 
             element.parent().find(attrs.selector).on('mousedown', function (event) {
                 event.preventDefault();
                 scope.val = String(scope.ngModel == null ? '' : scope.ngModel).replace('.', scope.getFuncButton());
+                $('body').on('touchmove', function(event) {
+                    event.preventDefault();
+                });
                 element.show();
-                overlay.show();
+                overlay.show();                
                 scope.$apply();
             });
 
             scope.cancel = function () {
                 element.hide();
+                $('body').off('touchmove');
             };
 
             scope.canSave = function () {
@@ -57,6 +61,7 @@ angular.module('rigi-numpad', []).directive('rigiNumpad', function () {
                 var finalVal = parseFloat(scope.val.replace(scope.getFuncButton(), '.'));
                 scope.ngModel = finalVal;
                 element.hide();
+                $('body').off('touchmove');
             };
 
             scope.apply = function (val) {
