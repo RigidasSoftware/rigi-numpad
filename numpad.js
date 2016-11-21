@@ -19,7 +19,7 @@ angular.module('rigi-numpad', []).directive('rigiNumpad', function () {
                 element.hide();
             });
 
-            $(attrs.selector).on('mousedown', function (event) {
+            element.parent().find(attrs.selector).on('mousedown', function (event) {
                 event.preventDefault();
                 scope.val = String(scope.ngModel).replace('.', scope.getFuncButton());
                 element.show();
