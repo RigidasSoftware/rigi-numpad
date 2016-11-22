@@ -20,7 +20,13 @@ angular.module('rigi-numpad', []).directive('rigiNumpad', function () {
                 element.hide();
             });
 
-            element.parent().find(attrs.selector).on('click', function (event) {
+            var selectedElement = element.parent().find(attrs.selector);
+
+            if(!selectedElement) {
+                throw 'Could not find element to bind numpad to!';
+            }
+
+            selectedElement.on('click', function (event) {
                 event.preventDefault();
                 scope.val = String(scope.ngModel == null ? '' : scope.ngModel).replace('.', scope.getFuncButton());
                 $('body').on('touchmove', function (event) {
@@ -30,6 +36,11 @@ angular.module('rigi-numpad', []).directive('rigiNumpad', function () {
                 overlay.show();
                 scope.$apply();
             });
+
+            selectedElement.on('mousedown', function(event) {
+                event.preventDefault();
+                selectedElement.click();
+            });            
 
             scope.cancel = function () {
                 element.hide();
