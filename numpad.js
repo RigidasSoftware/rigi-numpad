@@ -28,6 +28,7 @@ angular.module('rigi-numpad', []).directive('rigiNumpad', function () {
 
             selectedElement.on('click', function (event) {
                 event.preventDefault();
+                $('input, textarea').blur();
                 scope.val = String(scope.ngModel == null ? '' : scope.ngModel).replace('.', scope.getFuncButton());
                 $('body').on('touchmove', function (event) {
                     event.preventDefault();
