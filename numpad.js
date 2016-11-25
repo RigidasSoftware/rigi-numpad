@@ -38,7 +38,7 @@ angular.module('rigi-numpad', []).directive('rigiNumpad', function () {
                 scope.$apply();
             });
 
-            selectedElement.on('mousedown', function (event) {
+            selectedElement.on('mousedown focus', function (event) {
                 event.preventDefault();
                 selectedElement.click();
             });
