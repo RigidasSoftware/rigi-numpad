@@ -38,8 +38,12 @@ angular.module('rigi-numpad', []).directive('rigiNumpad', function () {
                 scope.$apply();
             });
 
-            selectedElement.on('mousedown focus touchstart', function (event) {
+            selectedElement.on('mousedown focus', function (event) {
                 event.preventDefault();
+                if(Keyboard) {
+                    //Where the cordova keyboard plugin is set, this will hide the native keyboard (iOS hack)
+                    Keyboard.hide();
+                }
                 selectedElement.click();
             });
 
